@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<project name="univero Web site package" default="build-package" basedir=".">
+	<property name="tmp.dir" value="./tmp"/>
+	<property name="build.dir" value="../site"/>
+	
+	<target name="build-package" depends="create-tmp-dir, copy-files, concat-files, minify-files, zip-tmp-dir, delete-tmp-dir">
+		<echo>Done.</echo>
+	</target>
+
+	<target name="create-tmp-dir">
+		<echo>Creating a temporary directory</echo>
+		<mkdir dir="${tmp.dir}"/>
+	</target>
+	
+	<target name="copy-files">
+		<echo>Copying files</echo>
+		
+		<mkdir dir="${tmp.dir}/components"/>
+			<mkdir dir="${tmp.dir}/components/build"/>
+				<copy todir="${tmp.dir}/components/build">
+					<resources>
+						<fileset dir="../build"/>
+					</resources>
+				</copy>
+			<mkdir dir="${tmp.dir}/components/css"/>
+				<copy todir="${tmp.dir}/components/css">
+					<resources>
+						<fileset dir="../css"/>
+					</resources>
+				</copy>
+			<mkdir dir="${tmp.dir}/components/db"/>
+				<copy todir="${tmp.dir}/components/db">
+					<resources>
+						<fileset dir="../db"/>
+					</resources>
+				</copy>
+			<mkdir dir="${tmp.dir}/components/tempjs"/>
+				<copy todir="${tmp.dir}/components/tempjs">
+					<resources>
+						<fileset dir="../js"/>
+					</resources>
+				</copy>
+			<mkdir dir="${tmp.dir}/components/php"/>
+				<copy todir="${tmp.dir}/components/php">
+					<resources>
+						<fileset dir="../php"/>
+					</resources>
+				</copy>
+			<mkdir dir="${tmp.dir}/components/pics"/>
+				<copy todir="${tmp.dir}/components/pics">
+					<resources>
+						<fileset dir="../pics"/>
+					</resources>
+				</copy>
+		<mkdir dir="${tmp.dir}/demo"/>
+			<copy todir="${tmp.dir}/demo">
+				<resources>
+					<fileset dir="../../demo"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/download"/>
+			<copy todir="${tmp.dir}/download">
+				<resources>
+					<fileset dir="../../download"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/editor"/>
+			<copy todir="${tmp.dir}/editor">
+				<resources>
+					<fileset dir="../../editor"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/howto"/>
+			<copy todir="${tmp.dir}/howto">
+				<resources>
+					<fileset dir="../../howto"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/index"/>
+			<copy todir="${tmp.dir}/index">
+				<resources>
+					<fileset dir="../../index"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/login"/>
+			<copy todir="${tmp.dir}/login">
+				<resources>
+					<fileset dir="../../login"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/login"/>
+			<copy todir="${tmp.dir}/login">
+				<resources>
+					<fileset dir="../../login"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/multimedia"/>
+			<copy todir="${tmp.dir}/multimedia">
+				<resources>
+					<fileset dir="../../multimedia"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/papers"/>
+			<copy todir="${tmp.dir}/papers">
+				<resources>
+					<fileset dir="../../papers"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/progress"/>
+			<copy todir="${tmp.dir}/progress">
+				<resources>
+					<fileset dir="../../progress"/>
+				</resources>
+			</copy>
+		<mkdir dir="${tmp.dir}/upload"/>
+			<copy todir="${tmp.dir}/upload">
+				<resources>
+					<fileset dir="../../upload"/>
+				</resources>
+			</copy>
+		
+		<copy file="../../index.php" todir="${tmp.dir}"/>
+	</target>
+
+	<target name="concat-files">
+		<echo>Concatenating files</echo>
+		<concat destfile="${tmp.dir}/components/tempjs/univero.js">
+			<fileset file="${tmp.dir}/components/tempjs/base.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/ajax.js"/>
+			
+			<fileset file="${tmp.dir}/components/tempjs/commons.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/balloon.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/parser.js"/>
+			
+			<fileset file="${tmp.dir}/components/tempjs/patent.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/journal.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/magazine.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/chapter.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/proceeding.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/report.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/presentation.js"/>
+			<fileset file="${tmp.dir}/components/tempjs/multimedia.js"/>
+		</concat>
+	</target>
+	
+	<taskdef name="yuicompress" classname="com.yahoo.platform.yui.compressor.YUICompressTask">
+		<classpath>
+			<fileset dir="c:/Program Files (x86)/yuicompressor/build">
+				<include name="*.jar"/>
+			</fileset>
+		</classpath>
+	</taskdef>
+	
+	<target name="minify-files">
+		<echo>Minifying files</echo>
+		<yuicompress munge="yes" linebreak="5000" preserveallsemicolons="yes" outputfolder="${tmp.dir}/components/js">
+			<fileset dir="${tmp.dir}/components/tempjs">
+				<include name="univero.js"/>
+				<include name="process.js"/>
+				<include name="service.js"/>
+			</fileset>
+		</yuicompress>
+		<delete dir="${tmp.dir}/components/tempjs"/>
+	</target>
+	
+	<target name="zip-tmp-dir">
+		<echo>Creating a new ZIP with the build</echo>
+		<zip destfile="${build.dir}/site.zip" basedir="${tmp.dir}"/>
+	</target>
+	
+	<target name="delete-tmp-dir">
+		<echo>Deleting the temporary directory</echo>
+		<delete dir="${tmp.dir}"/>
+	</target>
+	
+</project>

@@ -1,0 +1,198 @@
+body {
+	padding: 15px 5px 5px 15px;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 16px;
+}
+
+input, select, option {
+	background-color: #eeeeee;
+	width: 100%;
+}
+
+/* error pop-up */
+.balloon {
+	background-color: #ffffdd;
+	border: 1px dashed black;
+	padding: 2px;
+	position: absolute;
+	max-width: 300px;
+	display: none;
+	z-index: 100;
+}
+
+/* bold text */
+.bold {
+	font-weight: bold;
+}
+
+/* buttons that operate on entries */
+.buttons {
+	background-color: #eeeeee;
+	width: 0;
+	vertical-align: middle;
+}
+
+/* parameter name in entry view */
+.caption {
+	text-align: right;
+	vertical-align: top;
+	padding-right: 10px;
+	font-weight: bold;
+	width: 100px;
+}
+
+/* borders are collapsed */
+.collapsed {
+	border-collapse: collapse;
+}
+
+/* text field input */
+.editable {
+	max-width: 100%;
+}
+
+/* entry-view table */
+.entry {
+	width: 350px;
+}
+
+/* error message */
+.error {
+	color: red;
+}
+
+/* full width within parent container */
+.fullWidth {
+	width: 100%;
+}
+
+/* indented block */
+.indented {
+	padding-left: 10px;
+}
+
+/* contains the index of the reference */
+.indexCell {
+	vertical-align: top;
+	width: 20px;
+}
+
+/* contains rows of input elements */
+.inputsTable {
+	width: 250px;
+}
+
+/* contains rows of input elements */
+.inputsTableWide {
+	width: 400px;
+}
+
+/* italic text */
+.italic {
+	font-style: italic;
+}
+
+/* extra padding on the left */
+.leftPadding {
+	padding-left: 10px;
+}
+
+/* menu link */
+.menuLink {
+	color: blue;
+}
+
+/* visited menu link */
+.menuLink:visited {
+	color: blue;
+}
+
+/* prevent white-space break */
+.nobreak {
+	white-space: nowrap;
+}
+
+/* in an entry row, the operational part */
+.operationCell {
+	text-align: right;
+	vertical-align: top;
+}
+
+/* contains operation buttons */
+.operations {
+	width: 100px;
+	vertical-align: top;
+}
+
+/* cell that contains formatted entry */
+.presentCell {
+	width: 100%;
+	background-color: #ffffcc;
+}
+
+/* aligned on the right */
+.right {
+	text-align: right;
+}
+
+/* subsubtitle-level text */
+.subsubtitle {
+	font-weight: bold;
+	font-size: 105%;
+}
+
+/* subtitle-level text */
+.subtitle {
+	font-weight: bold;
+	font-size: 125%;
+}
+
+/* field containing the error */
+.textError {
+	border: 2px dotted red;
+}
+
+/* contains the type name */
+.titleCell {
+	font-weight: bold;
+	width: 100%;
+}
+
+/* holds the type names and toggles */
+.titleTable {
+	width: 100%; 
+	border-collapse: collapse;
+	background-color: #cccccc;
+	margin-bottom: 5px;
+}
+
+/* toggle object */
+.toggle {
+	color: blue;
+	cursor: pointer;
+	width: 20px;
+}
+
+/* inactive toggle object */
+.toggleInactive {
+	color: gray;
+}
+
+/* contains the toggle object for each entry row */
+.toggleCell {
+	width: 0;
+	vertical-align: top;
+}
+
+/* vertically aligned at the top */
+.top {
+	vertical-align: top;
+}
+
+/* contains year text */
+.year {
+	text-align: left;
+	font-weight: bold;
+	width: 100%;
+	padding: 10px 0 5px 0;
+}

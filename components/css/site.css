@@ -1,0 +1,55 @@
+.demo_bottomPadding {
+	padding-bottom: 8px;
+}
+
+.demo_entryIndex {
+	width: 0;
+	vertical-align: top;
+}
+
+.demo_fullWidth {
+	width: 100%;
+}
+
+.demo_pictureCell {
+	width: 0; 
+	padding-right: 10px;
+	vertical-align: top;
+}
+
+.demo_subsubtitle {
+	font-size: 110%;
+	font-weight: bold;
+	padding-bottom: 8px; 
+}
+
+.demo_subtitle {
+	font-size: 130%;
+	font-weight: bold;
+	padding-bottom: 16px;
+}
+
+.demo_toggler {
+	font-weight: normal;
+	color: blue;
+	cursor: pointer;
+}
+
+.demo_topDoublePadding {
+	padding-top: 16px;
+}
+
+.demo_topPadding {
+	padding-top: 8px;
+}
+
+.howto {
+	font-size: 300%;
+	color: #777777;
+	font-family: Times;
+}
+
+.websiteTable {
+	width: 740px;
+}
+
